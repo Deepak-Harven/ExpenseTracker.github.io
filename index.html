@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Neon Expense Tracker</title>
+  
+  <!-- Modern Font from Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Main Container -->
+  <div class="app-container">
+    
+    <!-- Left Column: Active Tracker -->
+    <div class="left-column">
+      <header>
+        <h1>Expense Tracker</h1>
+        <p class="subtitle">Manage your finances smoothly</p>
+      </header>
+
+      <!-- Balance and Summary -->
+      <div class="card glass-panel balance-card" style="position: relative;">
+        <button id="reset-balance-btn" class="reset-btn" title="Reset Balance to 0">↻</button>
+        <h4>Your Balance</h4>
+        <h1 id="balance" class="balance">₹0.00</h1>
+      </div>
+
+      <!-- Income / Expense Summary -->
+      <div class="card glass-panel inc-exp-container">
+        <div class="money-box">
+          <h4>Income</h4>
+          <p id="money-plus" class="money plus">+₹0.00</p>
+        </div>
+        <div class="divider"></div>
+        <div class="money-box">
+          <h4>Expense</h4>
+          <p id="money-minus" class="money minus">-₹0.00</p>
+        </div>
+      </div>
+
+      <!-- Transaction History Split -->
+      <div class="transactions-split-section" style="display: flex; gap: 20px; margin-bottom: 25px;">
+        <div class="history-column" style="flex: 1;">
+          <h3 style="color: #10b981;">Income History</h3>
+          <ul id="income-list" class="list">
+            <!-- JavaScript will inject income items here -->
+          </ul>
+        </div>
+        <div class="history-column" style="flex: 1;">
+          <h3 style="color: #ef4444;">Expense History</h3>
+          <ul id="expense-list" class="list">
+            <!-- JavaScript will inject expense items here -->
+          </ul>
+        </div>
+      </div>
+
+      <!-- Add New Transaction Form -->
+      <div class="card glass-panel add-transaction-section">
+        <h3>Add New Transaction</h3>
+        <form id="form">
+          <div class="form-control">
+            <label for="text">Description</label>
+            <input type="text" id="text" placeholder="e.g. Salary, Groceries..." autocomplete="off" />
+          </div>
+          <div class="form-control type-toggle">
+            <input type="radio" id="type-expense" name="transaction-type" value="expense" checked>
+            <label for="type-expense" class="toggle-btn expense-btn">Expense</label>
+            
+            <input type="radio" id="type-income" name="transaction-type" value="income">
+            <label for="type-income" class="toggle-btn income-btn">Income</label>
+          </div>
+
+          <div class="form-control">
+            <label for="amount">Amount</label>
+            <input type="number" id="amount" placeholder="e.g. 50 or 1500" step="0.01" min="0" />
+          </div>
+          <button class="btn">Add Transaction</button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Right Column: Saved Data -->
+    <div class="right-column">
+      <header>
+        <h2 class="section-title" style="margin-bottom: 5px;">Saved Reports</h2>
+        <p class="subtitle">Save your progress</p>
+      </header>
+      
+      <!-- Save Controls -->
+      <div class="card glass-panel save-controls" style="padding: 15px; margin-bottom: 15px;">
+        <label for="report-name-input">Report Name</label>
+        <input type="text" id="report-name-input" placeholder="e.g. May 14th or April 2026" autocomplete="off" style="margin-bottom: 15px;" />
+        
+        <div style="display: flex; gap: 10px;">
+          <button class="btn save-btn" id="save-daily-btn" style="margin: 0; flex: 1;">Save Daily</button>
+          <button class="btn save-btn" id="save-monthly-btn" style="margin: 0; flex: 1; background: linear-gradient(135deg, #00d2ff 0%, #3a7bd5 100%); box-shadow: 0 4px 15px rgba(0, 210, 255, 0.3);">Save Monthly</button>
+        </div>
+      </div>
+      
+      <!-- Daily Reports -->
+      <h3 style="margin-top: 20px; font-size: 1rem;">Daily Reports</h3>
+      <div class="saved-reports" id="daily-reports-list">
+        <!-- JS will populate daily reports here -->
+      </div>
+
+      <!-- Monthly Reports -->
+      <h3 style="margin-top: 20px; font-size: 1rem;">Monthly Reports</h3>
+      <div class="saved-reports" id="monthly-reports-list">
+        <!-- JS will populate monthly reports here -->
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

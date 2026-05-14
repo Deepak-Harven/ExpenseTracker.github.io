@@ -1,0 +1,470 @@
+:root {
+  /* Base Colors */
+  --bg-color: #eef2f6; /* Light grey */
+  --text-primary: #2d3748;
+  --text-secondary: #718096;
+  
+  /* Neon Accents */
+  --neon-green: #00ff88;
+  --neon-pink: #ff007f;
+  --neon-blue: #00d2ff;
+  --neon-purple: #7a28cb;
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--neon-blue) 0%, var(--neon-purple) 100%);
+
+  /* Glassmorphism */
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="black" stroke="white" stroke-width="1" d="M4 2 L18 13 L11.5 14 L15.5 21 L12.5 22 L8.5 15 L3 20 Z"/></svg>'), auto !important;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 20px;
+  /* Custom Solid Black Cursor */
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"><path fill="black" stroke="white" stroke-width="1" d="M4 2 L18 13 L11.5 14 L15.5 21 L12.5 22 L8.5 15 L3 20 Z"/></svg>'), auto;
+}
+
+/* Two-Column App Container */
+.app-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+}
+
+@media (min-width: 800px) {
+  .app-container {
+    grid-template-columns: 450px 1fr;
+  }
+}
+
+.left-column {
+  /* Takes up the left side */
+}
+
+.right-column {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  padding: 30px;
+  height: fit-content;
+  box-shadow: var(--glass-shadow);
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #10b981 0%, #047857 100%);
+  box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
+
+.save-btn:hover {
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+}
+
+.saved-reports {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.report-card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+  padding: 15px;
+  border-left: 5px solid var(--neon-blue);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.report-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+.report-delete-btn {
+  cursor: pointer;
+  background-color: #ff4757;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  right: -35px;
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+.report-card:hover .report-delete-btn {
+  right: 15px;
+  opacity: 1;
+}
+
+.report-card h4 {
+  margin-bottom: 8px;
+  font-size: 1.1rem;
+}
+
+.report-card p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 2px;
+}
+
+.report-card .report-balance {
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-top: 5px;
+  font-size: 1rem;
+}
+
+/* Header Typography */
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  /* Text gradient effect */
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 5px;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* Glass Panel Utility Class (Glassmorphism effect) */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  box-shadow: var(--glass-shadow);
+  padding: 25px;
+  margin-bottom: 25px;
+}
+
+/* Balance Section */
+.balance-card {
+  text-align: center;
+}
+
+.reset-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #a0a0a0;
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="black" stroke="white" stroke-width="1" d="M19 12h-2v-2h2v2zm0-4h-2V6h2v2zm-4-4h-2V2h2v2zm-4 10H9v-2h2v2zm0-4H9V6h2v2zm-4-4H5V2h2v2zm-4 4H1V6h2v2zm16 10h-2v-2h2v2zm0-4h-2v-2h2v2zm-4 8h-2v-2h2v2zm-4 0H9v-2h2v2zm-4 0H5v-2h2v2z"/></svg>'), pointer !important;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.reset-btn:hover {
+  color: var(--neon-pink);
+  transform: rotate(180deg);
+}
+
+.balance-card h4 {
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+}
+
+.balance-card h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+/* Income vs Expense Container */
+.inc-exp-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.money-box {
+  flex: 1;
+  text-align: center;
+}
+
+.money-box h4 {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  color: var(--text-secondary);
+  margin-bottom: 5px;
+}
+
+.money {
+  font-size: 1.4rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+/* Specific colors for plus and minus */
+.money.plus {
+  color: #10b981;
+  text-shadow: 0 0 10px rgba(16, 185, 129, 0.3);
+}
+
+.money.minus {
+  color: #ef4444;
+  text-shadow: 0 0 10px rgba(239, 68, 68, 0.3);
+}
+
+/* Divider line between income and expense */
+.divider {
+  width: 1px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0.1);
+  margin: 0 15px;
+}
+
+/* Sections */
+h3 {
+  border-bottom: 2px solid rgba(0,0,0,0.05);
+  padding-bottom: 10px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Transaction List Items */
+.list {
+  list-style-type: none;
+  padding: 0;
+  margin-bottom: 30px;
+}
+
+.list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  padding: 15px 20px;
+  margin-bottom: 12px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+  font-weight: 600;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  overflow: hidden;
+}
+
+.list li:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+}
+
+/* Neon Left Borders for List Items */
+.list li.plus::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--neon-green);
+  box-shadow: 0 0 10px var(--neon-green);
+}
+
+.list li.minus::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 5px;
+  background: var(--neon-pink);
+  box-shadow: 0 0 10px var(--neon-pink);
+}
+
+/* Delete Button Micro-Interaction */
+.delete-btn {
+  cursor: pointer;
+  background-color: #ff4757;
+  border: none;
+  color: #fff;
+  font-size: 1.2rem;
+  line-height: 1;
+  padding: 0;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  right: -35px; /* Hidden initially off-screen */
+  transform: translateY(-50%);
+  opacity: 0;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 10px rgba(255, 71, 87, 0.5);
+}
+
+/* Reveal delete button on hover */
+.list li:hover .delete-btn {
+  right: 15px;
+  opacity: 1;
+}
+
+.list li:hover span {
+  margin-right: 35px;
+  transition: margin 0.3s ease;
+}
+
+/* Form Styles */
+.form-control {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+small {
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 0.8rem;
+}
+
+input[type='text'],
+input[type='number'] {
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.1);
+  border-radius: 10px;
+  padding: 12px 15px;
+  font-size: 1rem;
+  font-family: inherit;
+  background-color: rgba(255, 255, 255, 0.8);
+  transition: all 0.3s ease;
+  outline: none;
+  caret-color: black; /* Solid black blinking cursor */
+  color: black;
+  cursor: text !important;
+}
+
+input[type='text']:focus,
+input[type='number']:focus {
+  border-color: var(--neon-blue);
+  box-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+  background-color: #fff;
+}
+
+/* Type Toggle Segmented Control */
+.type-toggle {
+  display: flex;
+  background-color: rgba(0,0,0,0.05);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.type-toggle input[type="radio"] {
+  display: none;
+}
+
+.toggle-btn {
+  flex: 1;
+  text-align: center;
+  padding: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all 0.3s ease;
+  margin-bottom: 0;
+}
+
+.type-toggle input[type="radio"]:checked + .expense-btn {
+  background-color: var(--neon-pink);
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 0, 127, 0.4);
+}
+
+.type-toggle input[type="radio"]:checked + .income-btn {
+  background-color: var(--neon-green);
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 255, 136, 0.4);
+}
+
+.expense-btn:hover, .income-btn:hover {
+  background-color: rgba(255,255,255,0.5);
+}
+
+/* Primary Button */
+.btn {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="black" stroke="white" stroke-width="1" d="M19 12h-2v-2h2v2zm0-4h-2V6h2v2zm-4-4h-2V2h2v2zm-4 10H9v-2h2v2zm0-4H9V6h2v2zm-4-4H5V2h2v2zm-4 4H1V6h2v2zm16 10h-2v-2h2v2zm0-4h-2v-2h2v2zm-4 8h-2v-2h2v2zm-4 0H9v-2h2v2zm-4 0H5v-2h2v2z"/></svg>'), pointer;
+  background: var(--gradient-primary);
+  box-shadow: 0 4px 15px rgba(122, 40, 203, 0.3);
+  color: #fff;
+  border: none;
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin: 10px 0 20px;
+  padding: 15px;
+  width: 100%;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(122, 40, 203, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
